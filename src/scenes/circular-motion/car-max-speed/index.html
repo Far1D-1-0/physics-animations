@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Animación educativa sobre la rapidez máxima de un automóvil en una curva plana."
+    />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>Rapidez máxima en una curva | Física animada</title>
+  </head>
+  <body>
+    <main class="lesson">
+      <header class="lesson__header">
+        <a class="back-link" href="/" aria-label="Volver al inicio">
+          <span aria-hidden="true">←</span>
+          Física animada
+        </a>
+        <div class="lesson__meta">
+          <span>Movimiento circular</span>
+          <span class="lesson__duration">≈ 1 min</span>
+        </div>
+      </header>
+
+      <section class="stage-shell" aria-labelledby="chapter-title">
+        <div class="stage-copy">
+          <p id="chapter-kicker" class="chapter-kicker"></p>
+          <h1 id="chapter-title"></h1>
+          <p id="chapter-message" class="chapter-message"></p>
+
+          <div id="data-cards" class="data-cards" aria-label="Datos del problema"></div>
+
+          <div class="formula-deck" aria-live="polite">
+            <div id="formula-radius" class="formula-card formula-card--compact"></div>
+            <div id="formula-acceleration" class="formula-card formula-card--hero"></div>
+            <div id="formula-radial" class="formula-card formula-stack"></div>
+            <div id="formula-limit" class="formula-card formula-stack"></div>
+            <div id="formula-vertical" class="formula-card formula-stack"></div>
+            <div id="formula-symbolic" class="formula-card formula-stack formula-stack--derivation"></div>
+            <div id="formula-numbers" class="formula-card formula-stack formula-stack--numbers"></div>
+            <div id="formula-result" class="formula-card formula-card--result"></div>
+          </div>
+        </div>
+
+        <div class="stage-visual">
+          <svg
+            class="physics-stage"
+            viewBox="0 0 800 600"
+            role="img"
+            aria-labelledby="svg-title svg-description"
+          >
+            <title id="svg-title">Rapidez máxima de un automóvil en una curva</title>
+            <desc id="svg-description">
+              Diagramas animados de una curva, aceleración centrípeta, fuerzas y derrape.
+            </desc>
+
+            <defs>
+              <filter id="soft-shadow" x="-30%" y="-30%" width="160%" height="160%">
+                <feDropShadow dx="0" dy="10" stdDeviation="10" flood-opacity=".22" />
+              </filter>
+              <marker id="arrow-blue" markerWidth="11" markerHeight="11" refX="8" refY="5" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 10 10">
+                <path d="M0,0 L10,5 L0,10 z" fill="#4db8ff" />
+              </marker>
+              <marker id="arrow-red" markerWidth="11" markerHeight="11" refX="8" refY="5" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 10 10">
+                <path d="M0,0 L10,5 L0,10 z" fill="#ff5e6c" />
+              </marker>
+              <marker id="arrow-orange" markerWidth="11" markerHeight="11" refX="8" refY="5" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 10 10">
+                <path d="M0,0 L10,5 L0,10 z" fill="#ffad42" />
+              </marker>
+              <marker id="arrow-green" markerWidth="11" markerHeight="11" refX="8" refY="5" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 10 10">
+                <path d="M0,0 L10,5 L0,10 z" fill="#52d69b" />
+              </marker>
+              <marker id="arrow-purple" markerWidth="11" markerHeight="11" refX="8" refY="5" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 10 10">
+                <path d="M0,0 L10,5 L0,10 z" fill="#a98bff" />
+              </marker>
+              <marker id="arrow-white" markerWidth="11" markerHeight="11" refX="8" refY="5" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 10 10">
+                <path d="M0,0 L10,5 L0,10 z" fill="#f3f7fb" />
+              </marker>
+              <symbol id="car-top" viewBox="-38 -23 76 46">
+                <rect x="-31" y="-20" width="62" height="40" rx="13" fill="#ffcc58" />
+                <path d="M-12 -17 L14 -17 L23 -10 L23 10 L14 17 L-12 17 L-21 10 L-21 -10 Z" fill="#121b27" />
+                <path d="M-13 -14 L10 -14 L16 -8 L-15 -8 Z" fill="#76c9ee" opacity=".9" />
+                <path d="M-15 8 L16 8 L10 14 L-13 14 Z" fill="#76c9ee" opacity=".75" />
+                <rect x="-28" y="-24" width="15" height="5" rx="2" fill="#090d13" />
+                <rect x="13" y="-24" width="15" height="5" rx="2" fill="#090d13" />
+                <rect x="-28" y="19" width="15" height="5" rx="2" fill="#090d13" />
+                <rect x="13" y="19" width="15" height="5" rx="2" fill="#090d13" />
+                <circle cx="25" cy="0" r="3" fill="#fff6c9" />
+              </symbol>
+              <symbol id="car-side" viewBox="0 0 220 100">
+                <path d="M27 70 L37 43 L76 36 L103 12 L158 13 L182 38 L205 48 L211 70 Z" fill="#ffcc58" />
+                <path d="M91 37 L111 18 L151 19 L170 38 Z" fill="#76c9ee" />
+                <circle cx="67" cy="72" r="19" fill="#111923" stroke="#8d9aab" stroke-width="5" />
+                <circle cx="173" cy="72" r="19" fill="#111923" stroke="#8d9aab" stroke-width="5" />
+                <path d="M18 82 H220" stroke="#e8edf3" stroke-width="5" stroke-linecap="round" />
+              </symbol>
+            </defs>
+
+            <rect class="stage-background" width="800" height="600" rx="30" />
+            <g class="grid-lines" opacity=".3">
+              <path d="M0 100H800 M0 200H800 M0 300H800 M0 400H800 M0 500H800" />
+              <path d="M100 0V600 M200 0V600 M300 0V600 M400 0V600 M500 0V600 M600 0V600 M700 0V600" />
+            </g>
+
+            <g id="top-view" class="scene-layer">
+              <circle class="grass-ring" cx="310" cy="300" r="228" />
+              <circle class="road" cx="310" cy="300" r="183" />
+              <circle class="grass-island" cx="310" cy="300" r="129" />
+              <circle id="guide-path" class="guide-path" cx="310" cy="300" r="181" />
+              <path id="car-motion-path" d="M310 481 A181 181 0 1 1 309.9 481" fill="none" />
+              <circle class="center-dot" cx="310" cy="300" r="7" />
+              <text class="svg-label svg-label--muted" x="286" y="282">centro</text>
+              <line id="radius-line" class="radius-line" x1="310" y1="300" x2="310" y2="481" />
+              <text id="radius-label" class="svg-label" x="330" y="400">r = 35.0 m</text>
+              <g id="main-car">
+                <use href="#car-top" x="-38" y="-23" width="76" height="46" filter="url(#soft-shadow)" />
+              </g>
+              <g id="velocity-vector" class="vector-group">
+                <line x1="330" y1="480" x2="465" y2="480" marker-end="url(#arrow-blue)" />
+                <text class="svg-label vector-blue" x="390" y="465">v</text>
+              </g>
+              <g id="acceleration-vector" class="vector-group">
+                <line x1="310" y1="458" x2="310" y2="345" marker-end="url(#arrow-red)" />
+                <text class="svg-label vector-red" x="326" y="405">a<tspan dy="5" font-size="14">c</tspan></text>
+              </g>
+            </g>
+
+            <g id="free-body-view" class="scene-layer">
+              <ellipse class="diagram-halo" cx="400" cy="315" rx="250" ry="190" />
+              <use href="#car-side" x="290" y="270" width="220" height="100" filter="url(#soft-shadow)" />
+              <line class="ground-line" x1="150" y1="352" x2="650" y2="352" />
+              <g id="normal-force" class="force-vector">
+                <line x1="400" y1="275" x2="400" y2="125" marker-end="url(#arrow-green)" />
+                <text class="svg-label vector-green" x="420" y="165">n</text>
+              </g>
+              <g id="weight-force" class="force-vector">
+                <line x1="400" y1="305" x2="400" y2="485" marker-end="url(#arrow-purple)" />
+                <text class="svg-label vector-purple" x="420" y="445">mg</text>
+              </g>
+              <g id="friction-force" class="force-vector">
+                <line id="friction-arrow" x1="325" y1="315" x2="155" y2="315" marker-end="url(#arrow-orange)" />
+                <text class="svg-label vector-orange" x="205" y="292">f<tspan dy="5" font-size="14">s</tspan></text>
+              </g>
+              <text class="svg-label svg-label--muted" x="105" y="289">hacia el centro</text>
+            </g>
+
+            <g id="grip-view" class="scene-layer">
+              <circle class="grip-ring" cx="365" cy="300" r="185" />
+              <circle class="grip-ring grip-ring--inner" cx="365" cy="300" r="122" />
+              <use href="#car-top" x="510" y="277" width="76" height="46" transform="rotate(-90 548 300)" />
+              <line id="grip-force-arrow" x1="510" y1="300" x2="385" y2="300" marker-end="url(#arrow-orange)" />
+              <text class="svg-label vector-orange" x="430" y="278">f<tspan dy="5" font-size="14">s</tspan></text>
+              <g class="grip-meter">
+                <rect x="155" y="500" width="420" height="22" rx="11" />
+                <rect id="grip-fill" x="155" y="500" width="0" height="22" rx="11" />
+                <line x1="575" y1="486" x2="575" y2="536" />
+                <text class="svg-label" x="582" y="520">límite</text>
+              </g>
+              <g id="limit-badge" class="limit-badge">
+                <rect x="250" y="76" width="230" height="52" rx="26" />
+                <circle cx="280" cy="102" r="8" />
+                <text x="302" y="109">Justo antes de derrapar</text>
+              </g>
+            </g>
+
+            <g id="math-view" class="scene-layer">
+              <circle class="math-orbit math-orbit--one" cx="400" cy="300" r="190" />
+              <circle class="math-orbit math-orbit--two" cx="400" cy="300" r="130" />
+              <circle class="math-core" cx="400" cy="300" r="76" />
+              <text class="math-core-symbol" x="400" y="322">v</text>
+              <g class="math-tags">
+                <g transform="translate(362 62)">
+                  <rect width="76" height="42" rx="21" />
+                  <text x="38" y="28">μ<tspan dy="4" font-size="14">s</tspan></text>
+                </g>
+                <g transform="translate(610 280)">
+                  <rect width="76" height="42" rx="21" />
+                  <text x="38" y="28">r</text>
+                </g>
+                <g transform="translate(362 496)">
+                  <rect width="76" height="42" rx="21" />
+                  <text x="38" y="28">g</text>
+                </g>
+              </g>
+            </g>
+
+            <g id="comparison-view" class="scene-layer">
+              <g class="comparison-panel comparison-panel--safe">
+                <rect x="35" y="55" width="340" height="490" rx="25" />
+                <text class="comparison-title" x="65" y="100">DENTRO DEL LÍMITE</text>
+                <path class="comparison-road" d="M70 475 C75 245 230 155 345 135" />
+                <path id="safe-path" d="M80 470 C85 260 230 170 340 145" fill="none" />
+                <g id="safe-car">
+                  <use href="#car-top" x="-34" y="-20" width="68" height="40" />
+                </g>
+                <g id="safe-formula" class="comparison-formula"></g>
+                <circle class="status-dot status-dot--safe" cx="330" cy="92" r="9" />
+              </g>
+              <g class="comparison-panel comparison-panel--unsafe">
+                <rect x="425" y="55" width="340" height="490" rx="25" />
+                <text class="comparison-title" x="455" y="100">SOBRE EL LÍMITE</text>
+                <path class="comparison-road" d="M460 475 C465 245 620 155 735 135" />
+                <path id="unsafe-path" d="M470 470 C475 260 620 170 730 145" fill="none" />
+                <path id="skid-path" d="M603 222 C670 198 726 207 786 246" fill="none" />
+                <g id="unsafe-car">
+                  <use href="#car-top" x="-34" y="-20" width="68" height="40" />
+                </g>
+                <g id="unsafe-formula" class="comparison-formula"></g>
+                <circle class="status-dot status-dot--unsafe" cx="720" cy="92" r="9" />
+                <g id="skid-marks">
+                  <path d="M625 226 C672 216 711 225 748 248" />
+                  <path d="M620 241 C665 230 704 239 741 263" />
+                </g>
+              </g>
+              <g id="result-banner">
+                <rect x="125" y="245" width="550" height="110" rx="28" />
+                <g id="result-banner-formula"></g>
+              </g>
+            </g>
+          </svg>
+
+          <div class="visual-legend" aria-label="Leyenda de vectores">
+            <span><i class="legend-dot legend-dot--velocity"></i>Velocidad</span>
+            <span><i class="legend-dot legend-dot--acceleration"></i>Aceleración</span>
+            <span><i class="legend-dot legend-dot--friction"></i>Fricción</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="player" aria-label="Controles de animación">
+        <div class="player__buttons">
+          <button id="play-button" class="control-button control-button--primary" type="button">
+            <span aria-hidden="true">▶</span> Play
+          </button>
+          <button id="pause-button" class="control-button" type="button">
+            <span aria-hidden="true">Ⅱ</span> Pause
+          </button>
+          <button id="restart-button" class="control-button" type="button">
+            <span aria-hidden="true">↻</span> Restart
+          </button>
+        </div>
+        <div class="player__timeline">
+          <input
+            id="progress-slider"
+            type="range"
+            min="0"
+            max="1000"
+            value="0"
+            aria-label="Progreso de la animación"
+          />
+          <div class="player__time">
+            <span id="current-time">0:00</span>
+            <span id="chapter-count">1 / 9</span>
+            <span id="total-time">0:00</span>
+          </div>
+        </div>
+      </section>
+
+      <nav id="chapter-nav" class="chapter-nav" aria-label="Capítulos de la explicación"></nav>
+    </main>
+
+    <script type="module" src="./scene.js"></script>
+  </body>
+</html>
