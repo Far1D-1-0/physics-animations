@@ -1,0 +1,4 @@
+@import '../shared/lesson.css';
+
+.rotor-disc { fill: #162834; stroke-width: 9; }
+.rotor-spoke { stroke: rgba(190,215,228,.58); stroke-width: 7; }

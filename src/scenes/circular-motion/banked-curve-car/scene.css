@@ -1,0 +1,27 @@
+@import '../car-max-speed/scene.css';
+
+.formula-card--hero .katex { color: var(--yellow); }
+.ground { fill: none; stroke: #8191a0; stroke-width: 3; }
+.bank-plane { fill: #354653; stroke: #5e7180; stroke-width: 2; }
+.bank-edge { fill: none; stroke: #d8e3e9; stroke-width: 5; stroke-linecap: round; }
+.angle-wedge { fill: rgba(255, 204, 88, .14); stroke: none; }
+.angle-reference { stroke: rgba(255, 204, 88, .72); stroke-width: 3; stroke-dasharray: 8 7; }
+.angle-arc { fill: none; stroke: var(--yellow); stroke-width: 7; stroke-linecap: round; }
+.angle-vertex { fill: var(--yellow); stroke: #fff0b3; stroke-width: 2; }
+.angle-reference-label { fill: #a8b7c4; font-family: 'Noto Sans', system-ui, sans-serif; font-size: 14px; font-weight: 700; letter-spacing: 1px; }
+.vector-yellow { fill: var(--yellow); }
+.center-direction, .result-radial { stroke: var(--red); stroke-width: 5; stroke-linecap: round; }
+.force-origin { fill: var(--yellow); }
+.force-vector line, .component-vector line { stroke-width: 7; stroke-linecap: round; }
+#normal-vector line { stroke: var(--green); }
+#weight-vector line { stroke: var(--purple); }
+#normal-x line { stroke: var(--red); }
+#normal-y line { stroke: var(--blue); }
+.component-guide { fill: none; stroke: rgba(255,255,255,.32); stroke-width: 2; stroke-dasharray: 7 8; }
+.legend-dot--normal { color: var(--green); }
+.legend-dot--weight { color: var(--purple); }
+.legend-dot--radial { color: var(--red); }
+.result-plane { fill: rgba(82,214,155,.12); stroke: rgba(82,214,155,.5); }
+#result-badge rect { fill: rgba(17,29,39,.96); stroke: var(--yellow); stroke-width: 2; }
+#result-badge text { fill: #c8d7e0; font-family: 'Noto Sans', system-ui, sans-serif; font-size: 14px; font-weight: 700; letter-spacing: 2px; text-anchor: middle; }
+#result-badge .result-number { fill: var(--yellow); font-size: 25px; letter-spacing: 0; }

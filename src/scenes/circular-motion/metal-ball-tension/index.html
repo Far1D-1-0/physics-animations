@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Animación educativa sobre la tensión de una cuerda que mantiene una bola en movimiento circular."
+    />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>Tensión de una bola en movimiento circular | Física animada</title>
+  </head>
+  <body>
+    <main class="lesson">
+      <header class="lesson__header">
+        <a class="back-link" href="/" aria-label="Volver al inicio">
+          <span aria-hidden="true">←</span>
+          Física animada
+        </a>
+        <div class="lesson__meta">
+          <span>Movimiento circular</span>
+          <span class="lesson__duration">≈ 1 min</span>
+        </div>
+      </header>
+
+      <section class="stage-shell" aria-labelledby="chapter-title">
+        <div class="stage-copy">
+          <p id="chapter-kicker" class="chapter-kicker"></p>
+          <h1 id="chapter-title"></h1>
+          <p id="chapter-message" class="chapter-message"></p>
+          <div id="data-cards" class="data-cards" aria-label="Datos del problema"></div>
+
+          <div class="formula-deck">
+            <div id="formula-radius" class="formula-card formula-card--compact"></div>
+            <div id="formula-velocity" class="formula-card formula-card--hero"></div>
+            <div id="formula-acceleration" class="formula-card formula-stack"></div>
+            <div id="formula-tension" class="formula-card formula-stack"></div>
+            <div id="formula-newton" class="formula-card formula-stack"></div>
+            <div id="formula-derive" class="formula-card formula-stack"></div>
+            <div id="formula-numbers" class="formula-card formula-stack formula-stack--numbers"></div>
+            <div id="formula-result" class="formula-card formula-card--result"></div>
+          </div>
+        </div>
+
+        <div class="stage-visual">
+          <svg class="physics-stage" viewBox="0 0 800 600" role="img" aria-labelledby="svg-title svg-description">
+            <title id="svg-title">Bola metálica girando alrededor de un eje</title>
+            <desc id="svg-description">Una bola unida por una cuerda a un eje, con vectores de velocidad, aceleración y tensión.</desc>
+            <defs>
+              <radialGradient id="ball-gradient" cx="32%" cy="26%">
+                <stop offset="0" stop-color="#ffffff" />
+                <stop offset=".18" stop-color="#b9d2df" />
+                <stop offset=".58" stop-color="#5e7481" />
+                <stop offset="1" stop-color="#263640" />
+              </radialGradient>
+              <linearGradient id="axis-gradient" x1="0" x2="1">
+                <stop offset="0" stop-color="#2a3a46" />
+                <stop offset=".45" stop-color="#9db1be" />
+                <stop offset=".7" stop-color="#3a4d59" />
+                <stop offset="1" stop-color="#182630" />
+              </linearGradient>
+              <filter id="ball-shadow" x="-50%" y="-50%" width="200%" height="200%">
+                <feDropShadow dx="0" dy="12" stdDeviation="10" flood-opacity=".5" />
+              </filter>
+              <marker id="arrow-blue" markerWidth="16" markerHeight="16" refX="13" refY="8" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 16 16">
+                <path d="M0,0 L16,8 L0,16 z" fill="#4db8ff" />
+              </marker>
+              <marker id="arrow-red" markerWidth="16" markerHeight="16" refX="13" refY="8" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 16 16">
+                <path d="M0,0 L16,8 L0,16 z" fill="#ff5e6c" />
+              </marker>
+              <marker id="arrow-orange" markerWidth="16" markerHeight="16" refX="13" refY="8" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 16 16">
+                <path d="M0,0 L16,8 L0,16 z" fill="#ffad42" />
+              </marker>
+            </defs>
+
+            <rect class="stage-background" width="800" height="600" rx="30" />
+            <g class="grid-lines" opacity=".3">
+              <path d="M0 100H800 M0 200H800 M0 300H800 M0 400H800 M0 500H800" />
+              <path d="M100 0V600 M200 0V600 M300 0V600 M400 0V600 M500 0V600 M600 0V600 M700 0V600" />
+            </g>
+
+            <g id="motion-view" class="scene-layer">
+              <ellipse class="orbit-plane" cx="400" cy="320" rx="245" ry="126" />
+              <ellipse id="orbit-guide" class="orbit-guide" cx="400" cy="320" rx="245" ry="126" />
+              <ellipse class="axis-base" cx="400" cy="455" rx="78" ry="22" />
+              <rect class="axis" x="376" y="115" width="48" height="340" rx="22" />
+              <ellipse class="axis-top" cx="400" cy="118" rx="24" ry="9" />
+              <circle class="pivot" cx="400" cy="320" r="13" />
+              <text class="svg-label svg-label--muted" x="426" y="305">eje</text>
+
+              <g id="orbit-arm">
+                <line id="string" class="string" x1="400" y1="320" x2="645" y2="320" />
+                <line id="radius-guide" class="radius-guide" x1="400" y1="346" x2="645" y2="346" />
+                <text id="radius-label" class="svg-label" x="500" y="378">r = 0.20 m</text>
+                <g id="ball" filter="url(#ball-shadow)">
+                  <circle cx="645" cy="320" r="34" fill="url(#ball-gradient)" />
+                  <circle cx="634" cy="309" r="8" fill="#fff" opacity=".52" />
+                </g>
+                <g id="velocity-vector" class="vector-group">
+                  <line x1="665" y1="292" x2="665" y2="175" marker-end="url(#arrow-blue)" />
+                  <text class="svg-label vector-blue" x="682" y="210">v</text>
+                </g>
+                <g id="acceleration-vector" class="vector-group">
+                  <line x1="610" y1="302" x2="472" y2="302" marker-end="url(#arrow-red)" />
+                  <text class="svg-label vector-red" x="520" y="282">a<tspan dy="5" font-size="14">c</tspan></text>
+                </g>
+                <g id="tension-vector" class="vector-group">
+                  <line x1="610" y1="336" x2="472" y2="336" marker-end="url(#arrow-orange)" />
+                  <text class="svg-label vector-orange" x="528" y="370">T</text>
+                </g>
+              </g>
+              <path id="motion-streak" class="motion-streak" d="M640 238 C700 260 710 350 650 395" />
+            </g>
+
+            <g id="equation-view" class="scene-layer">
+              <circle class="equation-orbit equation-orbit--outer" cx="400" cy="300" r="208" />
+              <circle class="equation-orbit equation-orbit--inner" cx="400" cy="300" r="138" />
+              <circle class="equation-core" cx="400" cy="300" r="82" />
+              <text class="equation-core-symbol" x="400" y="323">T</text>
+              <g class="equation-tags">
+                <g id="tag-m" transform="translate(360 52)"><rect width="80" height="44" rx="22" /><text x="40" y="29">m</text></g>
+                <g id="tag-v" transform="translate(620 278)"><rect width="80" height="44" rx="22" /><text x="40" y="29">v²</text></g>
+                <g id="tag-r" transform="translate(360 504)"><rect width="80" height="44" rx="22" /><text x="40" y="29">r</text></g>
+              </g>
+            </g>
+
+            <g id="result-view" class="scene-layer">
+              <ellipse class="orbit-plane result-orbit" cx="400" cy="330" rx="245" ry="126" />
+              <ellipse class="orbit-guide" cx="400" cy="330" rx="245" ry="126" />
+              <rect class="axis" x="382" y="150" width="36" height="300" rx="18" />
+              <line class="string" x1="400" y1="330" x2="645" y2="330" />
+              <circle cx="645" cy="330" r="34" fill="url(#ball-gradient)" filter="url(#ball-shadow)" />
+              <line class="result-tension" x1="607" y1="330" x2="468" y2="330" marker-end="url(#arrow-orange)" />
+              <g id="result-badge">
+                <rect x="215" y="62" width="370" height="94" rx="26" />
+                <text x="400" y="102">TENSIÓN HACIA EL CENTRO</text>
+                <text class="result-number" x="400" y="138">22.5 N</text>
+              </g>
+            </g>
+          </svg>
+
+          <div class="visual-legend" aria-label="Leyenda de vectores">
+            <span><i class="legend-dot legend-dot--velocity"></i>Velocidad</span>
+            <span><i class="legend-dot legend-dot--acceleration"></i>Aceleración</span>
+            <span><i class="legend-dot legend-dot--tension"></i>Tensión</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="player" aria-label="Controles de animación">
+        <div class="player__buttons">
+          <button id="play-button" class="control-button control-button--primary" type="button"><span aria-hidden="true">▶</span> Play</button>
+          <button id="pause-button" class="control-button" type="button"><span aria-hidden="true">Ⅱ</span> Pause</button>
+          <button id="restart-button" class="control-button" type="button"><span aria-hidden="true">↻</span> Restart</button>
+        </div>
+        <div class="player__timeline">
+          <input id="progress-slider" type="range" min="0" max="1000" value="0" aria-label="Progreso de la animación" />
+          <div class="player__time">
+            <span id="current-time">0:00</span>
+            <span id="chapter-count">1 / 8</span>
+            <span id="total-time">0:00</span>
+          </div>
+        </div>
+      </section>
+      <nav id="chapter-nav" class="chapter-nav chapter-nav--eight" aria-label="Capítulos de la explicación"></nav>
+    </main>
+    <script type="module" src="./scene.js"></script>
+  </body>
+</html>

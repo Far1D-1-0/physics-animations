@@ -1,0 +1,145 @@
+@import '../car-max-speed/scene.css';
+
+:root {
+  --steel: #a9c1cf;
+}
+
+.formula-card--hero .katex {
+  color: var(--blue);
+  font-size: clamp(1.2rem, 2.1vw, 1.85rem);
+}
+
+.orbit-plane {
+  fill: rgba(77, 184, 255, 0.035);
+  stroke: rgba(77, 184, 255, 0.12);
+  stroke-width: 2;
+}
+
+.orbit-guide {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.54);
+  stroke-width: 3;
+  stroke-dasharray: 11 14;
+}
+
+.axis {
+  fill: url('#axis-gradient');
+  stroke: rgba(220, 238, 248, 0.22);
+  stroke-width: 2;
+}
+
+.axis-top {
+  fill: #bacbd4;
+}
+
+.axis-base {
+  fill: #162631;
+  stroke: rgba(169, 193, 207, 0.35);
+  stroke-width: 3;
+}
+
+.pivot {
+  fill: var(--yellow);
+  stroke: #fff2b9;
+  stroke-width: 3;
+}
+
+.string {
+  stroke: #dbe8ef;
+  stroke-width: 4;
+  stroke-linecap: round;
+}
+
+.radius-guide {
+  stroke: var(--yellow);
+  stroke-width: 2;
+  stroke-dasharray: 7 8;
+}
+
+.motion-streak {
+  fill: none;
+  stroke: rgba(77, 184, 255, 0.42);
+  stroke-width: 7;
+  stroke-linecap: round;
+}
+
+#tension-vector line,
+.result-tension {
+  stroke: var(--orange);
+  stroke-width: 7;
+  stroke-linecap: round;
+}
+
+.legend-dot--tension {
+  color: var(--orange);
+}
+
+.equation-orbit {
+  fill: none;
+  stroke-width: 2;
+  stroke-dasharray: 8 12;
+}
+
+.equation-orbit--outer {
+  stroke: rgba(77, 184, 255, 0.22);
+}
+
+.equation-orbit--inner {
+  stroke: rgba(255, 173, 66, 0.28);
+}
+
+.equation-core {
+  fill: rgba(255, 173, 66, 0.1);
+  stroke: var(--orange);
+  stroke-width: 3;
+}
+
+.equation-core-symbol {
+  fill: var(--orange);
+  font-family: Georgia, serif;
+  font-size: 70px;
+  font-style: italic;
+  text-anchor: middle;
+}
+
+.equation-tags rect {
+  fill: #132330;
+  stroke: rgba(255, 255, 255, 0.16);
+}
+
+.equation-tags text {
+  fill: #e8f2f7;
+  font-family: Georgia, serif;
+  font-size: 24px;
+  font-style: italic;
+  text-anchor: middle;
+}
+
+#result-badge rect {
+  fill: rgba(17, 29, 39, 0.96);
+  stroke: var(--orange);
+  stroke-width: 2;
+}
+
+#result-badge text {
+  fill: #c8d7e0;
+  font-family: 'Noto Sans', system-ui, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-anchor: middle;
+}
+
+#result-badge .result-number {
+  fill: var(--yellow);
+  font-size: 28px;
+  letter-spacing: 0;
+}
+
+.result-orbit {
+  stroke: rgba(255, 173, 66, 0.2);
+}
+
+.chapter-nav--eight {
+  grid-template-columns: repeat(8, 1fr);
+}

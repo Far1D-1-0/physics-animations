@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Animación educativa sobre un automóvil en una curva peraltada." />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>Auto en curva peraltada | Física animada</title>
+  </head>
+  <body>
+    <main class="lesson">
+      <header class="lesson__header">
+        <a class="back-link" href="/" aria-label="Volver al inicio"><span aria-hidden="true">←</span>Física animada</a>
+        <div class="lesson__meta"><span>Movimiento circular</span><span class="lesson__duration">≈ 1 min</span></div>
+      </header>
+
+      <section class="stage-shell" aria-labelledby="chapter-title">
+        <div class="stage-copy">
+          <p id="chapter-kicker" class="chapter-kicker"></p>
+          <h1 id="chapter-title"></h1>
+          <p id="chapter-message" class="chapter-message"></p>
+          <div id="data-cards" class="data-cards" aria-label="Datos del problema"></div>
+          <div class="formula-deck">
+            <div id="formula-radius" class="formula-card formula-card--compact"></div>
+            <div id="formula-angle" class="formula-card formula-card--hero"></div>
+            <div id="formula-forces" class="formula-card formula-stack"></div>
+            <div id="formula-components" class="formula-card formula-stack"></div>
+            <div id="formula-vertical" class="formula-card formula-stack"></div>
+            <div id="formula-radial" class="formula-card formula-stack"></div>
+            <div id="formula-derive" class="formula-card formula-stack formula-stack--numbers"></div>
+            <div id="formula-numbers" class="formula-card formula-stack formula-stack--numbers"></div>
+            <div id="formula-result" class="formula-card formula-card--result"></div>
+          </div>
+        </div>
+
+        <div class="stage-visual">
+          <svg class="physics-stage" viewBox="0 0 800 600" role="img" aria-labelledby="svg-title svg-description">
+            <title id="svg-title">Automóvil en una curva peraltada</title>
+            <desc id="svg-description">Plano inclinado con auto, ángulo, normal, peso y componentes de fuerza.</desc>
+            <defs>
+              <filter id="soft-shadow" x="-40%" y="-40%" width="180%" height="180%"><feDropShadow dx="0" dy="10" stdDeviation="9" flood-opacity=".35" /></filter>
+              <marker id="arrow-green" markerWidth="16" markerHeight="16" refX="13" refY="8" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 16 16"><path d="M0,0 L16,8 L0,16 z" fill="#52d69b" /></marker>
+              <marker id="arrow-purple" markerWidth="16" markerHeight="16" refX="13" refY="8" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 16 16"><path d="M0,0 L16,8 L0,16 z" fill="#a98bff" /></marker>
+              <marker id="arrow-blue" markerWidth="16" markerHeight="16" refX="13" refY="8" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 16 16"><path d="M0,0 L16,8 L0,16 z" fill="#4db8ff" /></marker>
+              <marker id="arrow-red" markerWidth="16" markerHeight="16" refX="13" refY="8" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 16 16"><path d="M0,0 L16,8 L0,16 z" fill="#ff5e6c" /></marker>
+              <symbol id="car-side" viewBox="0 0 220 100">
+                <path d="M27 70 L37 43 L76 36 L103 12 L158 13 L182 38 L205 48 L211 70 Z" fill="#ffcc58" />
+                <path d="M91 37 L111 18 L151 19 L170 38 Z" fill="#76c9ee" />
+                <circle cx="67" cy="72" r="19" fill="#111923" stroke="#8d9aab" stroke-width="5" />
+                <circle cx="173" cy="72" r="19" fill="#111923" stroke="#8d9aab" stroke-width="5" />
+              </symbol>
+            </defs>
+            <rect class="stage-background" width="800" height="600" rx="30" />
+            <g class="grid-lines" opacity=".3"><path d="M0 100H800 M0 200H800 M0 300H800 M0 400H800 M0 500H800" /><path d="M100 0V600 M200 0V600 M300 0V600 M400 0V600 M500 0V600 M600 0V600 M700 0V600" /></g>
+
+            <g id="bank-view" class="scene-layer">
+              <path class="ground" d="M75 485 H725" />
+              <path id="bank-plane" class="bank-plane" d="M115 455 L690 301 L720 410 L145 564 Z" />
+              <path id="bank-edge" class="bank-edge" d="M115 455 L690 301" />
+              <g id="bank-car" transform="translate(344 315)">
+                <g transform="rotate(-15 110 50)">
+                  <use href="#car-side" width="220" height="100" filter="url(#soft-shadow)" />
+                </g>
+              </g>
+              <g id="angle-diagram">
+                <path class="angle-wedge" d="M115 455 L255 455 A140 140 0 0 0 250.2 418.8 Z" />
+                <line class="angle-reference" x1="115" y1="455" x2="285" y2="455" />
+                <path id="angle-arc" class="angle-arc" d="M255 455 A140 140 0 0 0 250.2 418.8" />
+                <circle class="angle-vertex" cx="115" cy="455" r="7" />
+                <text id="angle-label" class="svg-label vector-yellow" x="268" y="426">θ = 15°</text>
+                <text class="angle-reference-label" x="180" y="480">horizontal</text>
+              </g>
+              <line id="center-direction" class="center-direction" x1="355" y1="470" x2="140" y2="470" marker-end="url(#arrow-red)" />
+              <text id="center-label" class="svg-label svg-label--muted" x="135" y="505">hacia el centro</text>
+            </g>
+
+            <g id="force-view" class="scene-layer">
+              <path class="ground" d="M75 485 H725" />
+              <path class="bank-plane" d="M115 455 L690 301 L720 410 L145 564 Z" />
+              <path class="bank-edge" d="M115 455 L690 301" />
+              <g transform="translate(344 315) rotate(-15 110 50)"><use href="#car-side" width="220" height="100" filter="url(#soft-shadow)" /></g>
+              <circle class="force-origin" cx="455" cy="355" r="7" />
+              <g id="normal-vector" class="force-vector"><line x1="455" y1="355" x2="380" y2="76" marker-end="url(#arrow-green)" /><text class="svg-label vector-green" x="342" y="88">N</text></g>
+              <g id="weight-vector" class="force-vector"><line x1="455" y1="355" x2="455" y2="550" marker-end="url(#arrow-purple)" /><text class="svg-label vector-purple" x="478" y="525">mg</text></g>
+              <g id="normal-x" class="component-vector"><line x1="455" y1="355" x2="380" y2="355" marker-end="url(#arrow-red)" /><text class="svg-label vector-red" x="300" y="345">N sin θ</text></g>
+              <g id="normal-y" class="component-vector"><line x1="455" y1="355" x2="455" y2="76" marker-end="url(#arrow-blue)" /><text class="svg-label vector-blue" x="478" y="120">N cos θ</text></g>
+              <path id="component-guide" class="component-guide" d="M380 76 V355 M380 76 H455" />
+            </g>
+
+            <g id="math-view" class="scene-layer">
+              <circle class="math-orbit math-orbit--one" cx="400" cy="300" r="205" />
+              <circle class="math-orbit math-orbit--two" cx="400" cy="300" r="138" />
+              <circle class="math-core" cx="400" cy="300" r="82" />
+              <text class="math-core-symbol" x="400" y="322">v</text>
+              <g class="math-tags">
+                <g transform="translate(350 52)"><rect width="100" height="44" rx="22" /><text x="50" y="29">r</text></g>
+                <g transform="translate(620 278)"><rect width="100" height="44" rx="22" /><text x="50" y="29">tan θ</text></g>
+                <g transform="translate(350 504)"><rect width="100" height="44" rx="22" /><text x="50" y="29">g</text></g>
+              </g>
+            </g>
+
+            <g id="result-view" class="scene-layer">
+              <path class="ground" d="M75 485 H725" />
+              <path class="bank-plane result-plane" d="M115 455 L690 301 L720 410 L145 564 Z" />
+              <path class="bank-edge" d="M115 455 L690 301" />
+              <g id="result-car" transform="translate(344 315) rotate(-15 110 50)"><use href="#car-side" width="220" height="100" filter="url(#soft-shadow)" /></g>
+              <g id="result-badge"><rect x="200" y="72" width="400" height="100" rx="28" /><text x="400" y="112">RAPIDEZ DE DISEÑO</text><text class="result-number" x="400" y="150">11.5 m/s · 41.4 km/h</text></g>
+              <line class="result-radial" x1="425" y1="390" x2="190" y2="390" marker-end="url(#arrow-red)" />
+            </g>
+          </svg>
+          <div class="visual-legend" aria-label="Leyenda de vectores">
+            <span><i class="legend-dot legend-dot--normal"></i>Normal</span>
+            <span><i class="legend-dot legend-dot--weight"></i>Peso</span>
+            <span><i class="legend-dot legend-dot--radial"></i>Radial</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="player" aria-label="Controles de animación">
+        <div class="player__buttons">
+          <button id="play-button" class="control-button control-button--primary" type="button"><span aria-hidden="true">▶</span> Play</button>
+          <button id="pause-button" class="control-button" type="button"><span aria-hidden="true">Ⅱ</span> Pause</button>
+          <button id="restart-button" class="control-button" type="button"><span aria-hidden="true">↻</span> Restart</button>
+        </div>
+        <div class="player__timeline">
+          <input id="progress-slider" type="range" min="0" max="1000" value="0" aria-label="Progreso de la animación" />
+          <div class="player__time"><span id="current-time">0:00</span><span id="chapter-count">1 / 9</span><span id="total-time">0:00</span></div>
+        </div>
+      </section>
+      <nav id="chapter-nav" class="chapter-nav" aria-label="Capítulos de la explicación"></nav>
+    </main>
+    <script type="module" src="./scene.js"></script>
+  </body>
+</html>
