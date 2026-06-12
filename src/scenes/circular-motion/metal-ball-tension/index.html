@@ -25,10 +25,12 @@
 
       <section class="stage-shell" aria-labelledby="chapter-title">
         <div class="stage-copy">
-          <p id="chapter-kicker" class="chapter-kicker"></p>
-          <h1 id="chapter-title"></h1>
-          <p id="chapter-message" class="chapter-message"></p>
-          <div id="data-cards" class="data-cards" aria-label="Datos del problema"></div>
+          <div class="copy-fixed">
+            <p id="chapter-kicker" class="chapter-kicker"></p>
+            <h1 id="chapter-title"></h1>
+            <p id="chapter-message" class="chapter-message"></p>
+            <div id="data-cards" class="data-cards" aria-label="Datos del problema"></div>
+          </div>
 
           <div class="formula-deck">
             <div id="formula-radius" class="formula-card formula-card--compact"></div>
@@ -71,6 +73,12 @@
               <marker id="arrow-orange" markerWidth="16" markerHeight="16" refX="13" refY="8" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 16 16">
                 <path d="M0,0 L16,8 L0,16 z" fill="#ffad42" />
               </marker>
+              <marker id="arrow-green" markerWidth="16" markerHeight="16" refX="13" refY="8" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 16 16">
+                <path d="M0,0 L16,8 L0,16 z" fill="#52d69b" />
+              </marker>
+              <marker id="arrow-purple" markerWidth="16" markerHeight="16" refX="13" refY="8" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 16 16">
+                <path d="M0,0 L16,8 L0,16 z" fill="#a98bff" />
+              </marker>
             </defs>
 
             <rect class="stage-background" width="800" height="600" rx="30" />
@@ -91,7 +99,7 @@
               <g id="orbit-arm">
                 <line id="string" class="string" x1="400" y1="320" x2="645" y2="320" />
                 <line id="radius-guide" class="radius-guide" x1="400" y1="346" x2="645" y2="346" />
-                <text id="radius-label" class="svg-label" x="500" y="378">r = 0.20 m</text>
+                <text id="radius-label" class="svg-label" x="500" y="378">r = 0.80 m</text>
                 <g id="ball" filter="url(#ball-shadow)">
                   <circle cx="645" cy="320" r="34" fill="url(#ball-gradient)" />
                   <circle cx="634" cy="309" r="8" fill="#fff" opacity=".52" />
@@ -110,6 +118,30 @@
                 </g>
               </g>
               <path id="motion-streak" class="motion-streak" d="M640 238 C700 260 710 350 650 395" />
+            </g>
+
+            <g id="free-body-view" class="scene-layer">
+              <ellipse class="diagram-halo" cx="400" cy="320" rx="250" ry="190" />
+              <line class="ground-line" x1="150" y1="354" x2="650" y2="354" />
+              <rect class="axis" x="288" y="120" width="24" height="300" rx="12" />
+              <line class="string" x1="300" y1="320" x2="550" y2="320" />
+              <g id="free-body-ball" filter="url(#ball-shadow)">
+                <circle cx="550" cy="320" r="34" fill="url(#ball-gradient)" />
+                <circle cx="539" cy="309" r="8" fill="#fff" opacity=".52" />
+              </g>
+              <g id="normal-force" class="force-vector">
+                <line x1="550" y1="320" x2="550" y2="150" marker-end="url(#arrow-green)" />
+                <text class="svg-label vector-green" x="572" y="180">n</text>
+              </g>
+              <g id="weight-force" class="force-vector">
+                <line x1="550" y1="320" x2="550" y2="490" marker-end="url(#arrow-purple)" />
+                <text class="svg-label vector-purple" x="572" y="460">mg</text>
+              </g>
+              <g id="tension-force" class="force-vector">
+                <line x1="516" y1="320" x2="360" y2="320" marker-end="url(#arrow-orange)" />
+                <text class="svg-label vector-orange" x="430" y="295">T</text>
+              </g>
+              <text class="svg-label svg-label--muted" x="200" y="295">hacia el eje</text>
             </g>
 
             <g id="equation-view" class="scene-layer">

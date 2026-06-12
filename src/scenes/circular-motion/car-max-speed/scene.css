@@ -89,7 +89,7 @@ button {
 
 .stage-shell {
   display: grid;
-  grid-template-columns: minmax(330px, 0.77fr) minmax(520px, 1.23fr);
+  grid-template-columns: minmax(390px, 0.8fr) minmax(520px, 1.2fr);
   height: clamp(560px, calc(100vh - 225px), 660px);
   min-height: 0;
   overflow: hidden;
@@ -105,32 +105,47 @@ button {
   display: flex;
   flex-direction: column;
   min-height: 0;
-  overflow-x: hidden;
-  overflow-y: auto;
-  padding: clamp(35px, 5vw, 76px);
-  padding-right: clamp(28px, 4vw, 60px);
+  overflow: hidden;
   border-right: 1px solid var(--line);
+}
+
+/* Fixed top section: kicker, title, message, data cards */
+.copy-fixed {
+  flex-shrink: 0;
+  padding: 24px clamp(28px, 3vw, 44px) 0;
+  background: rgba(16, 27, 39, 0.98);
+}
+
+/* Scrollable formula zone */
+.formula-deck {
+  position: relative;
+  flex: 1 1 0;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 0;
+  border-top: 1px solid var(--line);
   overscroll-behavior: contain;
   scrollbar-color: rgba(255, 204, 88, 0.65) rgba(255, 255, 255, 0.06);
   scrollbar-gutter: stable;
   scrollbar-width: thin;
 }
 
-.stage-copy::-webkit-scrollbar {
+.formula-deck::-webkit-scrollbar {
   width: 8px;
 }
 
-.stage-copy::-webkit-scrollbar-track {
+.formula-deck::-webkit-scrollbar-track {
   background: rgba(255, 255, 255, 0.04);
 }
 
-.stage-copy::-webkit-scrollbar-thumb {
+.formula-deck::-webkit-scrollbar-thumb {
   border-radius: 999px;
   background: rgba(255, 204, 88, 0.58);
 }
 
 .chapter-kicker {
-  margin: 0 0 16px;
+  margin: 0 0 10px;
   color: var(--yellow);
   font-size: 0.78rem;
   font-weight: 700;
@@ -142,30 +157,30 @@ button {
   max-width: 660px;
   margin: 0;
   font-family: 'Noto Sans', system-ui, sans-serif;
-  font-size: clamp(2rem, 3.4vw, 4.25rem);
-  line-height: 1.04;
+  font-size: clamp(1.75rem, 2.35vw, 2.8rem);
+  line-height: 1.08;
   letter-spacing: -0.045em;
 }
 
 .chapter-message {
   max-width: 590px;
-  min-height: 72px;
-  margin: 24px 0 0;
+  min-height: 50px;
+  margin: 12px 0 0;
   color: var(--muted);
-  font-size: clamp(1rem, 1.25vw, 1.18rem);
-  line-height: 1.65;
+  font-size: clamp(0.92rem, 1vw, 1.05rem);
+  line-height: 1.45;
 }
 
 .data-cards {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 10px;
-  margin-top: auto;
-  padding-top: 28px;
+  margin-top: 12px;
+  padding-bottom: 14px;
 }
 
 .data-card {
-  padding: 14px 16px;
+  padding: 8px 11px;
   border: 1px solid var(--line);
   border-radius: 13px;
   background: rgba(255, 255, 255, 0.025);
@@ -173,7 +188,7 @@ button {
 
 .data-card__label {
   display: block;
-  margin-bottom: 6px;
+  margin-bottom: 4px;
   color: var(--muted);
   font-size: 0.68rem;
   font-weight: 700;
@@ -185,20 +200,18 @@ button {
   font-size: 0.98rem;
 }
 
-.formula-deck {
-  position: relative;
-  flex: 0 0 400px;
-  min-height: 400px;
-  margin-top: 24px;
-}
-
 .formula-card {
   position: absolute;
-  inset: 0;
+  top: 14px;
+  right: clamp(28px, 3vw, 44px);
+  left: clamp(28px, 3vw, 44px);
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  justify-content: center;
+  justify-content: flex-start;
+  min-height: calc(100% - 38px);
+  padding-bottom: 24px;
+  padding-top: 8px;
   visibility: hidden;
   opacity: 0;
 }
@@ -736,9 +749,15 @@ input:focus-visible,
 
   .stage-copy {
     min-height: 480px;
-    overflow: visible;
+    overflow: hidden;
     border-right: 0;
     border-bottom: 1px solid var(--line);
+  }
+  .copy-fixed {
+    padding: 24px 24px 0;
+  }
+  .formula-deck {
+    padding: 14px 24px 24px;
     scrollbar-gutter: auto;
   }
 
@@ -763,11 +782,10 @@ input:focus-visible,
 
   .stage-copy {
     min-height: 540px;
-    padding: 32px 24px;
   }
 
   .chapter-message {
-    min-height: 110px;
+    min-height: 50px;
   }
 
   .data-card {

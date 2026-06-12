@@ -1,18 +1,9 @@
 @import '../../circular-motion/car-max-speed/scene.css';
 
 :root { --velocity: #52d69b; --tangential: #4db8ff; --centripetal: #ff5e6c; --total: #ffad42; }
-.stage-shell { grid-template-columns: minmax(350px, .8fr) minmax(540px, 1.2fr); }
-.stage-copy { padding: 22px clamp(28px, 3vw, 48px); }
-.chapter-kicker { margin-bottom: 10px; }
-.stage-copy h1 { font-size: clamp(1.75rem, 2.35vw, 2.8rem); }
-.chapter-message { min-height: 50px; margin-top: 12px; font-size: clamp(.92rem, 1vw, 1.05rem); line-height: 1.45; }
-.data-cards { margin-top: 0; padding-top: 12px; }
-.data-card { padding: 8px 11px; }
-.data-card__label { margin-bottom: 4px; }
-.formula-deck { flex: 0 0 190px; min-height: 190px; margin-top: 12px; }
-.formula-stack { overflow: hidden; }
 .formula-row { padding: 6px 12px; margin: 2px 0; }
 .formula-row .katex { font-size: clamp(.9rem, 1.25vw, 1.14rem); }
+
 .rotor-disc { fill: #233746; stroke: #7d98aa; stroke-width: 5; }
 .rotor-rim { fill: none; stroke: rgba(255,255,255,.45); stroke-width: 3; stroke-dasharray: 10 12; }
 .rotor-spoke { stroke: rgba(190,215,228,.34); stroke-width: 5; }
@@ -48,6 +39,5 @@
 }
 
 @media (max-width: 700px) {
-  .formula-deck { flex-basis: 190px; min-height: 190px; }
   .physics-stage { max-height: 420px; }
 }

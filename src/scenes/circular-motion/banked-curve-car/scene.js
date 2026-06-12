@@ -68,7 +68,11 @@ function buildChapterNavigation() {
 }
 
 function showFormula(timeline, selector, position) {
-  timeline.to('.formula-card', { autoAlpha: 0, duration: 0.25 }, position).to(selector, { autoAlpha: 1, duration: 0.45 }, '<0.15')
+  timeline
+    .to('.formula-card', { autoAlpha: 0, duration: 0.25 }, position)
+    .set('.formula-card', { display: 'none' })
+    .set(selector, { display: 'flex' })
+    .to(selector, { autoAlpha: 1, duration: 0.45 }, '<0.15')
 }
 
 function revealRows(timeline, selector, position, stagger = 0.7) {
@@ -81,6 +85,7 @@ function changeLayer(timeline, outgoing, incoming, position) {
 
 function buildTimeline() {
   gsap.set('.scene-layer, .formula-card, .formula-row', { autoAlpha: 0 })
+  gsap.set('.formula-card', { display: 'none' })
   gsap.set('#bank-view', { autoAlpha: 1 })
   gsap.set('#angle-diagram, #center-direction, #center-label, .force-vector, .component-vector, #component-guide, #result-badge', { autoAlpha: 0 })
   gsap.set('.math-tags > g', { autoAlpha: 0, scale: 0.65, transformOrigin: 'center' })
@@ -186,6 +191,7 @@ function updateChapter(index) {
   if (index === activeChapterIndex) return
   activeChapterIndex = index
   const chapter = chapters[index]
+  document.querySelector('.formula-deck').scrollTo({ top: 0, behavior: 'smooth' })
   document.querySelector('#chapter-kicker').textContent = chapter.kicker
   document.querySelector('#chapter-title').textContent = chapter.title
   document.querySelector('#chapter-message').textContent = chapter.message

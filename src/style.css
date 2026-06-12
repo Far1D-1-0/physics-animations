@@ -96,6 +96,27 @@ body {
   color: #f4f7fb;
 }
 
+.collection__section {
+  margin-top: 45px;
+}
+
+.collection__section-title {
+  font-family: 'Noto Sans', system-ui, sans-serif;
+  font-size: 1.4rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin: 0 0 24px;
+  color: #ffcc58;
+  border-bottom: 1px solid rgba(214, 230, 245, 0.08);
+  padding-bottom: 12px;
+}
+
+.collection__section-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
 .lesson-card {
   display: grid;
   grid-template-columns: minmax(280px, 0.7fr) minmax(360px, 1.3fr);
@@ -108,10 +129,6 @@ body {
   transition:
     transform 180ms ease,
     border-color 180ms ease;
-}
-
-.lesson-card + .lesson-card {
-  margin-top: 20px;
 }
 
 .lesson-card:hover {

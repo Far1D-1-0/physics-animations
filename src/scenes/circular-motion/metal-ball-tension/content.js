@@ -1,7 +1,7 @@
 export const problem = {
   mass: 0.5,
-  radius: 0.2,
-  speed: 3.0,
+  radius: 0.8,
+  speed: 6.0,
   acceleration: 45,
   tension: 22.5,
 }
@@ -66,7 +66,7 @@ export const chapters = [
 ]
 
 export const formulas = {
-  radius: String.raw`r=0.20\,\mathrm{m}`,
+  radius: String.raw`r=0.80\,\mathrm{m}`,
   velocity: String.raw`\vec v\ \text{tangente a la trayectoria}`,
   acceleration: [
     String.raw`\vec a_c\ \text{apunta hacia el centro}`,
@@ -87,7 +87,7 @@ export const formulas = {
   ],
   numbers: [
     String.raw`T=m\frac{v^2}{r}`,
-    String.raw`T=(0.50)\frac{(3.0)^2}{0.20}`,
+    String.raw`T=(0.50)\frac{(6.0)^2}{0.80}`,
     String.raw`T=(0.50)(45)`,
     String.raw`T=22.5\,\mathrm{N}`,
   ],
@@ -96,7 +96,7 @@ export const formulas = {
 
 export const dataCards = [
   { label: 'Masa', value: String.raw`m=0.50\,\mathrm{kg}` },
-  { label: 'Radio', value: String.raw`r=0.20\,\mathrm{m}` },
-  { label: 'Rapidez', value: String.raw`v=3.0\,\mathrm{m/s}` },
+  { label: 'Radio', value: String.raw`r=0.80\,\mathrm{m}` },
+  { label: 'Rapidez', value: String.raw`v=6.0\,\mathrm{m/s}` },
   { label: 'Incógnita', value: String.raw`T=?` },
 ]

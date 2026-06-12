@@ -53,10 +53,12 @@ export function mountLesson({ kind, pageTitle, diagramTitle, diagramDescription,
       </header>
       <section class="stage-shell" aria-labelledby="chapter-title">
         <div class="stage-copy">
-          <p id="chapter-kicker" class="chapter-kicker"></p>
-          <h1 id="chapter-title"></h1>
-          <p id="chapter-message" class="chapter-message"></p>
-          <div id="data-cards" class="data-cards" aria-label="Datos del problema"></div>
+          <div class="copy-fixed">
+            <p id="chapter-kicker" class="chapter-kicker"></p>
+            <h1 id="chapter-title"></h1>
+            <p id="chapter-message" class="chapter-message"></p>
+            <div id="data-cards" class="data-cards" aria-label="Datos del problema"></div>
+          </div>
           <div class="formula-deck">${formulaMarkup}</div>
         </div>
         <div class="stage-visual">

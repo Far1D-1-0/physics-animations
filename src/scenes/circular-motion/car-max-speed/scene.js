@@ -138,6 +138,8 @@ function prepareStroke(selector) {
 function showFormula(timeline, selector, position) {
   timeline
     .to(SELECTORS.formulas, { autoAlpha: 0, duration: 0.25 }, position)
+    .set(SELECTORS.formulas, { display: 'none' })
+    .set(selector, { display: 'flex' })
     .to(selector, { autoAlpha: 1, duration: 0.45 }, '<0.18')
 }
 
@@ -175,7 +177,7 @@ function buildTimeline() {
   prepareStroke('#skid-marks path:last-child')
 
   gsap.set(SELECTORS.layers, { autoAlpha: 0 })
-  gsap.set(SELECTORS.formulas, { autoAlpha: 0 })
+  gsap.set(SELECTORS.formulas, { autoAlpha: 0, display: 'none' })
   gsap.set(SELECTORS.formulaRows, { autoAlpha: 0 })
   gsap.set('#top-view', { autoAlpha: 1 })
   gsap.set('#main-car', {
@@ -458,6 +460,7 @@ function updateChapter(index) {
 
   activeChapterIndex = index
   const chapter = chapters[index]
+  document.querySelector('.formula-deck').scrollTo({ top: 0, behavior: 'smooth' })
 
   document.querySelector('#chapter-kicker').textContent = chapter.kicker
   document.querySelector('#chapter-title').textContent = chapter.title

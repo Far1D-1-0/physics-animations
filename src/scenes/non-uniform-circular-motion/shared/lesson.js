@@ -38,7 +38,11 @@ export function renderLessonContent({ formulas, dataCards }) {
 }
 
 export function showFormula(timeline, selector, position) {
-  timeline.to('.formula-card', { autoAlpha: 0, duration: 0.22 }, position).to(selector, { autoAlpha: 1, duration: 0.4 }, '<0.12')
+  timeline
+    .to('.formula-card', { autoAlpha: 0, duration: 0.22 }, position)
+    .set('.formula-card', { display: 'none' })
+    .set(selector, { display: 'flex' })
+    .to(selector, { autoAlpha: 1, duration: 0.4 }, '<0.12')
 }
 
 export function revealRows(timeline, selector, position, stagger = 0.55) {
@@ -78,6 +82,7 @@ export function createLessonPlayer({ chapters, timeline }) {
     if (index === activeChapterIndex) return
     activeChapterIndex = index
     const chapter = chapters[index]
+    document.querySelector('.formula-deck').scrollTo({ top: 0, behavior: 'smooth' })
     document.querySelector('#chapter-kicker').textContent = chapter.kicker
     document.querySelector('#chapter-title').textContent = chapter.title
     document.querySelector('#chapter-message').textContent = chapter.message
@@ -120,6 +125,7 @@ export function createLessonPlayer({ chapters, timeline }) {
 
 export function buildStandardTimeline({ chapters, sequence }) {
   gsap.set('.scene-layer, .formula-card, .formula-row', { autoAlpha: 0 })
+  gsap.set('.formula-card', { display: 'none' })
   gsap.set('#motion-view', { autoAlpha: 1 })
   gsap.set('#radius-line, #radius-label, #rotation-arrow, #velocity-vector, #tangential-vector, #centripetal-vector, #total-vector, #result-panel', { autoAlpha: 0 })
 
@@ -150,6 +156,6 @@ export function buildStandardTimeline({ chapters, sequence }) {
 
   const summaryId = chapters.at(-1).id
   timeline.addLabel(summaryId)
-  timeline.to('.formula-card', { autoAlpha: 0, duration: 0.3 }, summaryId).to('#motion-view', { autoAlpha: 0, duration: 0.45 }, summaryId).to('#summary-view', { autoAlpha: 1, duration: 0.65 }, `${summaryId}+=0.25`).fromTo('#result-panel', { autoAlpha: 0, scale: 0.86, svgOrigin: '400 300' }, { autoAlpha: 1, scale: 1, duration: 0.7, ease: 'back.out(1.4)' }, `${summaryId}+=0.65`).to({}, { duration: 1.5 })
+  timeline.to('.formula-card', { autoAlpha: 0, duration: 0.3 }, summaryId).set('.formula-card', { display: 'none' }).to('#motion-view', { autoAlpha: 0, duration: 0.45 }, summaryId).to('#summary-view', { autoAlpha: 1, duration: 0.65 }, `${summaryId}+=0.25`).fromTo('#result-panel', { autoAlpha: 0, scale: 0.86, svgOrigin: '400 300' }, { autoAlpha: 1, scale: 1, duration: 0.7, ease: 'back.out(1.4)' }, `${summaryId}+=0.65`).to({}, { duration: 1.5 })
   return timeline
 }

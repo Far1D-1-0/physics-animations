@@ -75,6 +75,8 @@ function buildChapterNavigation() {
 function showFormula(timeline, selector, position) {
   timeline
     .to('.formula-card', { autoAlpha: 0, duration: 0.25 }, position)
+    .set('.formula-card', { display: 'none' })
+    .set(selector, { display: 'flex' })
     .to(selector, { autoAlpha: 1, duration: 0.45 }, '<0.15')
 }
 
@@ -95,10 +97,12 @@ function changeLayer(timeline, outgoing, incoming, position) {
 
 function buildTimeline() {
   gsap.set('.scene-layer, .formula-card, .formula-row', { autoAlpha: 0 })
+  gsap.set('.formula-card', { display: 'none' })
   gsap.set('#motion-view', { autoAlpha: 1 })
   gsap.set('#velocity-vector, #acceleration-vector, #tension-vector, #radius-guide, #radius-label', {
     autoAlpha: 0,
   })
+  gsap.set('#normal-force, #weight-force, #tension-force', { autoAlpha: 0 })
   gsap.set('.equation-tags > g', { autoAlpha: 0, scale: 0.65, transformOrigin: 'center' })
   gsap.set('#result-badge', { autoAlpha: 0, scale: 0.8, transformOrigin: 'center' })
 
@@ -148,16 +152,18 @@ function buildTimeline() {
     .to({}, { duration: 0.45 })
 
   timeline.addLabel('newton')
+  changeLayer(timeline, '#motion-view', '#free-body-view', 'newton')
   showFormula(timeline, '#formula-newton', 'newton')
   revealRows(timeline, '#formula-newton', 'newton+=0.35', 0.9)
   timeline
-    .to('#acceleration-vector, #tension-vector', { autoAlpha: 1, duration: 0.4 }, 'newton+=0.2')
-    .to('#acceleration-vector line, #tension-vector line', { strokeWidth: 11, yoyo: true, repeat: 2, duration: 0.4 }, 'newton+=1.2')
-    .to('#orbit-arm', { rotation: 1210, svgOrigin: '400 320', duration: 3.2, ease: 'none' }, 'newton')
+    .fromTo('#weight-force', { autoAlpha: 0, scaleY: 0, transformOrigin: '550px 320px' }, { autoAlpha: 1, scaleY: 1, duration: 0.75 }, 'newton+=0.6')
+    .fromTo('#normal-force', { autoAlpha: 0, scaleY: 0, transformOrigin: '550px 320px' }, { autoAlpha: 1, scaleY: 1, duration: 0.75 }, 'newton+=1.3')
+    .fromTo('#tension-force', { autoAlpha: 0, scaleX: 0, transformOrigin: '550px 320px' }, { autoAlpha: 1, scaleX: 1, duration: 0.85 }, 'newton+=2.0')
+    .to('#tension-force line', { strokeWidth: 10, yoyo: true, repeat: 2, duration: 0.4 }, 'newton+=3.0')
     .to({}, { duration: 0.5 })
 
   timeline.addLabel('derive')
-  changeLayer(timeline, '#motion-view', '#equation-view', 'derive')
+  changeLayer(timeline, '#free-body-view', '#equation-view', 'derive')
   showFormula(timeline, '#formula-derive', 'derive+=0.2')
   revealRows(timeline, '#formula-derive', 'derive+=0.65', 0.8)
   timeline
@@ -176,7 +182,7 @@ function buildTimeline() {
 
   timeline.addLabel('result')
   changeLayer(timeline, '#equation-view', '#result-view', 'result')
-  showFormula(timeline, '#formula-result', 'result+=0.2')
+  timeline.to('.formula-card', { autoAlpha: 0, duration: 0.25 }, 'result').set('.formula-card', { display: 'none' })
   timeline
     .fromTo('.result-tension', { scaleX: 0, transformOrigin: '607px 330px' }, { scaleX: 1, duration: 0.8 }, 'result+=0.55')
     .fromTo('#result-badge', { autoAlpha: 0, scale: 0.8, y: -10 }, { autoAlpha: 1, scale: 1, y: 0, duration: 0.65, ease: 'back.out(1.5)' }, 'result+=1.25')
@@ -198,6 +204,7 @@ function updateChapter(index) {
   if (index === activeChapterIndex) return
   activeChapterIndex = index
   const chapter = chapters[index]
+  document.querySelector('.formula-deck').scrollTo({ top: 0, behavior: 'smooth' })
   document.querySelector('#chapter-kicker').textContent = chapter.kicker
   document.querySelector('#chapter-title').textContent = chapter.title
   document.querySelector('#chapter-message').textContent = chapter.message
