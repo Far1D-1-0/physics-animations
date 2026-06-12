@@ -59,23 +59,23 @@
               <filter id="soft-shadow" x="-30%" y="-30%" width="160%" height="160%">
                 <feDropShadow dx="0" dy="10" stdDeviation="10" flood-opacity=".22" />
               </filter>
-              <marker id="arrow-blue" markerWidth="11" markerHeight="11" refX="8" refY="5" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 10 10">
-                <path d="M0,0 L10,5 L0,10 z" fill="#4db8ff" />
+              <marker id="arrow-blue" markerWidth="16" markerHeight="16" refX="13" refY="8" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 16 16">
+                <path d="M0,0 L16,8 L0,16 z" fill="#4db8ff" />
               </marker>
-              <marker id="arrow-red" markerWidth="11" markerHeight="11" refX="8" refY="5" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 10 10">
-                <path d="M0,0 L10,5 L0,10 z" fill="#ff5e6c" />
+              <marker id="arrow-red" markerWidth="16" markerHeight="16" refX="13" refY="8" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 16 16">
+                <path d="M0,0 L16,8 L0,16 z" fill="#ff5e6c" />
               </marker>
-              <marker id="arrow-orange" markerWidth="11" markerHeight="11" refX="8" refY="5" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 10 10">
-                <path d="M0,0 L10,5 L0,10 z" fill="#ffad42" />
+              <marker id="arrow-orange" markerWidth="16" markerHeight="16" refX="13" refY="8" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 16 16">
+                <path d="M0,0 L16,8 L0,16 z" fill="#ffad42" />
               </marker>
-              <marker id="arrow-green" markerWidth="11" markerHeight="11" refX="8" refY="5" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 10 10">
-                <path d="M0,0 L10,5 L0,10 z" fill="#52d69b" />
+              <marker id="arrow-green" markerWidth="16" markerHeight="16" refX="13" refY="8" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 16 16">
+                <path d="M0,0 L16,8 L0,16 z" fill="#52d69b" />
               </marker>
-              <marker id="arrow-purple" markerWidth="11" markerHeight="11" refX="8" refY="5" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 10 10">
-                <path d="M0,0 L10,5 L0,10 z" fill="#a98bff" />
+              <marker id="arrow-purple" markerWidth="16" markerHeight="16" refX="13" refY="8" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 16 16">
+                <path d="M0,0 L16,8 L0,16 z" fill="#a98bff" />
               </marker>
-              <marker id="arrow-white" markerWidth="11" markerHeight="11" refX="8" refY="5" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 10 10">
-                <path d="M0,0 L10,5 L0,10 z" fill="#f3f7fb" />
+              <marker id="arrow-white" markerWidth="16" markerHeight="16" refX="13" refY="8" orient="auto" markerUnits="userSpaceOnUse" viewBox="0 0 16 16">
+                <path d="M0,0 L16,8 L0,16 z" fill="#f3f7fb" />
               </marker>
               <symbol id="car-top" viewBox="-38 -23 76 46">
                 <rect x="-31" y="-20" width="62" height="40" rx="13" fill="#ffcc58" />
@@ -108,21 +108,25 @@
               <circle class="road" cx="310" cy="300" r="183" />
               <circle class="grass-island" cx="310" cy="300" r="129" />
               <circle id="guide-path" class="guide-path" cx="310" cy="300" r="181" />
-              <path id="car-motion-path" d="M310 481 A181 181 0 1 1 309.9 481" fill="none" />
+              <path
+                id="car-motion-path"
+                d="M310 119 A181 181 0 0 1 491 300 A181 181 0 0 1 310 481 A181 181 0 0 1 129 300 A181 181 0 0 1 310 119"
+                fill="none"
+              />
               <circle class="center-dot" cx="310" cy="300" r="7" />
               <text class="svg-label svg-label--muted" x="286" y="282">centro</text>
-              <line id="radius-line" class="radius-line" x1="310" y1="300" x2="310" y2="481" />
-              <text id="radius-label" class="svg-label" x="330" y="400">r = 35.0 m</text>
+              <line id="radius-line" class="radius-line" x1="310" y1="300" x2="310" y2="119" />
+              <text id="radius-label" class="svg-label" x="330" y="215">r = 35.0 m</text>
               <g id="main-car">
                 <use href="#car-top" x="-38" y="-23" width="76" height="46" filter="url(#soft-shadow)" />
               </g>
               <g id="velocity-vector" class="vector-group">
-                <line x1="330" y1="480" x2="465" y2="480" marker-end="url(#arrow-blue)" />
-                <text class="svg-label vector-blue" x="390" y="465">v</text>
+                <line x1="342" y1="119" x2="477" y2="119" marker-end="url(#arrow-blue)" />
+                <text class="svg-label vector-blue" x="405" y="103">v</text>
               </g>
               <g id="acceleration-vector" class="vector-group">
-                <line x1="310" y1="458" x2="310" y2="345" marker-end="url(#arrow-red)" />
-                <text class="svg-label vector-red" x="326" y="405">a<tspan dy="5" font-size="14">c</tspan></text>
+                <line x1="310" y1="145" x2="310" y2="258" marker-end="url(#arrow-red)" />
+                <text class="svg-label vector-red" x="326" y="210">a<tspan dy="5" font-size="14">c</tspan></text>
               </g>
             </g>
 
@@ -131,12 +135,12 @@
               <use href="#car-side" x="290" y="270" width="220" height="100" filter="url(#soft-shadow)" />
               <line class="ground-line" x1="150" y1="352" x2="650" y2="352" />
               <g id="normal-force" class="force-vector">
-                <line x1="400" y1="275" x2="400" y2="125" marker-end="url(#arrow-green)" />
-                <text class="svg-label vector-green" x="420" y="165">n</text>
+                <line x1="400" y1="315" x2="400" y2="120" marker-end="url(#arrow-green)" />
+                <text class="svg-label vector-green" x="422" y="160">n</text>
               </g>
               <g id="weight-force" class="force-vector">
-                <line x1="400" y1="305" x2="400" y2="485" marker-end="url(#arrow-purple)" />
-                <text class="svg-label vector-purple" x="420" y="445">mg</text>
+                <line x1="400" y1="315" x2="400" y2="510" marker-end="url(#arrow-purple)" />
+                <text class="svg-label vector-purple" x="422" y="470">mg</text>
               </g>
               <g id="friction-force" class="force-vector">
                 <line id="friction-arrow" x1="325" y1="315" x2="155" y2="315" marker-end="url(#arrow-orange)" />

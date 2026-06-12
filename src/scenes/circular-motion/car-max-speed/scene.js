@@ -243,15 +243,20 @@ function buildTimeline() {
   addChapter(timeline, 'acceleration')
   showFormula(timeline, '#formula-acceleration', 'acceleration+=0.25')
   timeline
+    .to(
+      '#radius-line, #radius-label',
+      { autoAlpha: 0, duration: 0.35 },
+      'acceleration+=0.1',
+    )
     .fromTo(
       '#velocity-vector',
-      { autoAlpha: 0, scaleX: 0, transformOrigin: '330px 480px' },
+      { autoAlpha: 0, scaleX: 0, transformOrigin: '342px 119px' },
       { autoAlpha: 1, scaleX: 1, duration: 0.8 },
       'acceleration+=0.4',
     )
     .fromTo(
       '#acceleration-vector',
-      { autoAlpha: 0, scaleY: 0, transformOrigin: '310px 458px' },
+      { autoAlpha: 0, scaleY: 0, transformOrigin: '310px 145px' },
       { autoAlpha: 1, scaleY: 1, duration: 0.8 },
       'acceleration+=1.25',
     )
@@ -274,13 +279,13 @@ function buildTimeline() {
     )
     .fromTo(
       '#weight-force',
-      { autoAlpha: 0, scaleY: 0, transformOrigin: '400px 305px' },
+      { autoAlpha: 0, scaleY: 0, transformOrigin: '400px 315px' },
       { autoAlpha: 1, scaleY: 1, duration: 0.65 },
       'forces+=1.3',
     )
     .fromTo(
       '#normal-force',
-      { autoAlpha: 0, scaleY: 0, transformOrigin: '400px 275px' },
+      { autoAlpha: 0, scaleY: 0, transformOrigin: '400px 315px' },
       { autoAlpha: 1, scaleY: 1, duration: 0.65 },
       'forces+=2',
     )
@@ -330,8 +335,8 @@ function buildTimeline() {
   timeline
     .set('#friction-force', { autoAlpha: 0 }, 'vertical+=0.35')
     .to(
-      '#normal-force, #weight-force',
-      { scale: 1.08, repeat: 3, yoyo: true, duration: 0.4 },
+      '#normal-force line, #weight-force line',
+      { strokeWidth: 9, repeat: 3, yoyo: true, duration: 0.4 },
       'vertical+=0.75',
     )
     .to({}, { duration: 0.7 })

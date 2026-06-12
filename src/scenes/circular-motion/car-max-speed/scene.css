@@ -90,7 +90,8 @@ button {
 .stage-shell {
   display: grid;
   grid-template-columns: minmax(330px, 0.77fr) minmax(520px, 1.23fr);
-  min-height: min(660px, calc(100vh - 225px));
+  height: clamp(560px, calc(100vh - 225px), 660px);
+  min-height: 0;
   overflow: hidden;
   border: 1px solid var(--line);
   border-radius: 28px;
@@ -103,9 +104,29 @@ button {
   z-index: 2;
   display: flex;
   flex-direction: column;
+  min-height: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
   padding: clamp(35px, 5vw, 76px);
   padding-right: clamp(28px, 4vw, 60px);
   border-right: 1px solid var(--line);
+  overscroll-behavior: contain;
+  scrollbar-color: rgba(255, 204, 88, 0.65) rgba(255, 255, 255, 0.06);
+  scrollbar-gutter: stable;
+  scrollbar-width: thin;
+}
+
+.stage-copy::-webkit-scrollbar {
+  width: 8px;
+}
+
+.stage-copy::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.stage-copy::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: rgba(255, 204, 88, 0.58);
 }
 
 .chapter-kicker {
@@ -166,7 +187,8 @@ button {
 
 .formula-deck {
   position: relative;
-  min-height: 208px;
+  flex: 0 0 400px;
+  min-height: 400px;
   margin-top: 24px;
 }
 
@@ -179,6 +201,10 @@ button {
   justify-content: center;
   visibility: hidden;
   opacity: 0;
+}
+
+.formula-stack {
+  justify-content: flex-start;
 }
 
 .formula-card--compact,
@@ -248,7 +274,7 @@ button {
 .stage-visual {
   position: relative;
   display: grid;
-  min-height: 600px;
+  min-height: 0;
   place-items: center;
   overflow: hidden;
   background:
@@ -327,7 +353,7 @@ button {
 
 .vector-group line,
 .force-vector line {
-  stroke-width: 5;
+  stroke-width: 6;
   stroke-linecap: round;
 }
 
@@ -395,7 +421,7 @@ button {
 
 #grip-force-arrow {
   stroke: var(--orange);
-  stroke-width: 5;
+  stroke-width: 6;
   stroke-linecap: round;
 }
 
@@ -705,12 +731,15 @@ input:focus-visible,
 @media (max-width: 1050px) {
   .stage-shell {
     grid-template-columns: 1fr;
+    height: auto;
   }
 
   .stage-copy {
     min-height: 480px;
+    overflow: visible;
     border-right: 0;
     border-bottom: 1px solid var(--line);
+    scrollbar-gutter: auto;
   }
 
   .stage-visual {
